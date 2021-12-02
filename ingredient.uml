@@ -1,0 +1,59 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Diagram>
+  <ID>DATABASE</ID>
+  <OriginalElement>66f1c40b-9baf-4935-9ed5-4f340ed12c71.TABLE:retete.public.ingredient</OriginalElement>
+  <nodes>
+    <node x="296.375" y="239.0">66f1c40b-9baf-4935-9ed5-4f340ed12c71.TABLE:retete.public.recipes</node>
+    <node x="311.875" y="0.0">66f1c40b-9baf-4935-9ed5-4f340ed12c71.TABLE:retete.public.users</node>
+    <node x="236.00000000000003" y="423.0">66f1c40b-9baf-4935-9ed5-4f340ed12c71.TABLE:retete.public.instruction</node>
+    <node x="44.5" y="239.0">66f1c40b-9baf-4935-9ed5-4f340ed12c71.TABLE:retete.public.ingredient</node>
+    <node x="56.0" y="434.5">66f1c40b-9baf-4935-9ed5-4f340ed12c71.TABLE:retete.public.ingredient_recipes</node>
+    <node x="453.0" y="412.0">66f1c40b-9baf-4935-9ed5-4f340ed12c71.TABLE:retete.public.review</node>
+  </nodes>
+  <notes />
+  <edges>
+    <edge source="66f1c40b-9baf-4935-9ed5-4f340ed12c71.TABLE:retete.public.recipes" target="66f1c40b-9baf-4935-9ed5-4f340ed12c71.TABLE:retete.public.users" relationship="REFERENCES">
+      <point x="0.0" y="-61.5" />
+      <point x="0.0" y="94.5" />
+    </edge>
+    <edge source="66f1c40b-9baf-4935-9ed5-4f340ed12c71.TABLE:retete.public.ingredient_recipes" target="66f1c40b-9baf-4935-9ed5-4f340ed12c71.TABLE:retete.public.ingredient" relationship="REFERENCES">
+      <point x="-40.0" y="-39.0" />
+      <point x="96.0" y="392.0" />
+      <point x="131.0" y="392.0" />
+      <point x="0.0" y="61.5" />
+    </edge>
+    <edge source="66f1c40b-9baf-4935-9ed5-4f340ed12c71.TABLE:retete.public.instruction" target="66f1c40b-9baf-4935-9ed5-4f340ed12c71.TABLE:retete.public.recipes" relationship="REFERENCES">
+      <point x="0.0" y="-50.5" />
+      <point x="334.5" y="392.0" />
+      <point x="445.25" y="392.0" />
+      <point x="445.25" y="382.0" />
+      <point x="462.125" y="382.0" />
+      <point x="55.25" y="61.5" />
+    </edge>
+    <edge source="66f1c40b-9baf-4935-9ed5-4f340ed12c71.TABLE:retete.public.ingredient_recipes" target="66f1c40b-9baf-4935-9ed5-4f340ed12c71.TABLE:retete.public.recipes" relationship="REFERENCES">
+      <point x="40.0" y="-39.0" />
+      <point x="176.0" y="382.0" />
+      <point x="351.625" y="382.0" />
+      <point x="-55.25" y="61.5" />
+    </edge>
+    <edge source="66f1c40b-9baf-4935-9ed5-4f340ed12c71.TABLE:retete.public.review" target="66f1c40b-9baf-4935-9ed5-4f340ed12c71.TABLE:retete.public.recipes" relationship="REFERENCES">
+      <point x="0.0" y="-61.5" />
+      <point x="556.0" y="392.0" />
+      <point x="445.25" y="392.0" />
+      <point x="445.25" y="382.0" />
+      <point x="462.125" y="382.0" />
+      <point x="55.25" y="61.5" />
+    </edge>
+  </edges>
+  <settings layout="Hierarchic" zoom="0.717117117117117" showDependencies="false" x="337.98313250126716" y="275.50000000000006" />
+  <SelectedNodes>
+    <node>66f1c40b-9baf-4935-9ed5-4f340ed12c71.TABLE:retete.public.ingredient</node>
+  </SelectedNodes>
+  <Categories>
+    <Category>Columns</Category>
+    <Category>Comments</Category>
+    <Category>Key columns</Category>
+    <Category>Virtual foreign keys</Category>
+  </Categories>
+</Diagram>
+
