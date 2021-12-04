@@ -18,6 +18,10 @@ public class Recipe {
     private double preparationTime;
 
 
+    @Column(nullable = true, name = "photoUrl")
+    private String photoUrl;
+
+
     @OneToMany(targetEntity = Review.class,cascade = CascadeType.ALL)
     @JoinColumn(name="recipeId",referencedColumnName = "id")
     private Set<Review> reviews=new HashSet<>();
@@ -29,6 +33,11 @@ public class Recipe {
     @ManyToMany(mappedBy = "recipes")
     private Set<Ingredient> ingredients;
 
+    @OneToOne(cascade = CascadeType.ALL)
+    @JoinColumn(name = "id")
+    private Category category;
+
+    public String getCategoryName(){return category.getCategoryName();}
 
     public Integer getId() {
         return id;
@@ -76,5 +85,21 @@ public class Recipe {
 
     public void setIngredients(Set<Ingredient> ingredients) {
         this.ingredients = ingredients;
+    }
+
+    public Category getCategory() {
+        return category;
+    }
+
+    public void setCategory(Category category) {
+        this.category = category;
+    }
+
+    public String getPhotoUrl() {
+        return photoUrl;
+    }
+
+    public void setPhotoUrl(String photoUrl) {
+        this.photoUrl = photoUrl;
     }
 }

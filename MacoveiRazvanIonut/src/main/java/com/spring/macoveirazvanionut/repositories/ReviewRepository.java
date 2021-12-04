@@ -1,4 +1,7 @@
 package com.spring.macoveirazvanionut.repositories;
 
-public interface ReviewRepository {
+import com.spring.macoveirazvanionut.entities.Review;
+import org.springframework.data.repository.CrudRepository;
+
+public interface ReviewRepository extends CrudRepository<Review,Integer> {
 }

@@ -1,4 +1,7 @@
 package com.spring.macoveirazvanionut.repositories;
 
-public interface InstructionRepository {
+import com.spring.macoveirazvanionut.entities.Instruction;
+import org.springframework.data.repository.CrudRepository;
+
+public interface InstructionRepository extends CrudRepository<Instruction,Integer> {
 }
