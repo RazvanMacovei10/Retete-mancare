@@ -8,12 +8,13 @@
           rel="stylesheet"
           integrity="sha384-1BmE4kWBq78iYhFldvKuhfTAU6auU8tT94WrHftjDbrCEXSU1oBoqyl2QvZ6jIW3"
           crossorigin="anonymous">
+    <link href="../static/designs.css" rel="stylesheet">
 </head>
 <body>
-welcome to create account
+<h1>welcome to create account</h1>
 <br>
 
-<div class="container-fluid text-center">
+<div class="container-fluid text-center,">
     Create account
     <form th:action="@{/user/createAccount/save}" method="post" th:object="${user}"
     style="max-width: 50em;margin:0 auto">
@@ -23,7 +24,7 @@ welcome to create account
             First Name
         </label>
         <div class="col-sm-8">
-            <input type="text" th:field="${user.firstName}" class="form-control"/>
+            <input type="text" th:field="${user.firstName}" class="form-control" required minlength="3" maxlength="20"/>
         </div>
     </div>
     <div class="form-group row">
@@ -31,7 +32,7 @@ welcome to create account
             Last Name
         </label>
         <div class="col-sm-8">
-            <input type="text" th:field="${user.lastName}" class="form-control"/>
+            <input type="text" th:field="${user.lastName}" class="form-control" required minlength="3" maxlength="20"/>
         </div>
     </div>
     <div class="form-group row">
@@ -39,7 +40,7 @@ welcome to create account
             E-mail:
         </label>
         <div class="col-sm-8">
-            <input type="email" th:field="${user.email}" class="form-control"/>
+            <input type="email" th:field="${user.email}" class="form-control" required minlength="7"/>
         </div>
     </div>
     <div class="form-group row">
@@ -47,7 +48,7 @@ welcome to create account
            Phone number:
         </label>
         <div class="col-sm-8">
-            <input type="text" th:field="${user.phoneNumber}" class="form-control"/>
+            <input type="number" th:field="${user.phoneNumber}" class="form-control" required minlength="10" maxlength="10"/>
         </div>
     </div>
     <div class="form-group row">
@@ -55,16 +56,10 @@ welcome to create account
             Password:
         </label>
         <div class="col-sm-8">
-            <input type="password" th:field="${user.password}" class="form-control"/>
+            <input type="password" th:field="${user.password}" class="form-control" required minlength="3" maxlength="20"/>
         </div>
     </div>
     <div class="form-group row">
-        <label class="col-sm-4 col-form-label">
-            Confirm Password::
-        </label>
-        <div class="col-sm-8">
-            <input type="password" th:field="${user.password}" class="form-control"/>
-        </div>
         <div class="text" style="margin:1em" align="right">
             <button type="submit" class="btn btn-primary">Create Account</button>
             <button type="button" class="btn btn-secondary">Cancel</button>
