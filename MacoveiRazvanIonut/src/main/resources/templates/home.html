@@ -16,6 +16,8 @@
         <div>
             <form th:action="@{/logout}"method="post">
                 <p>
+                    Welcome <b>[[${#request.userPrincipal.principal.fullName}]]</b>
+                    <b>[[${#request.userPrincipal.principal.id}]]</b>
                 </p>
                 <input type="submit" value="Sign out"/>
             </form>

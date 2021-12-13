@@ -13,5 +13,13 @@ import java.util.List;
 
 @Controller
 public class RecipeController {
+    @Autowired private RecipeServices recipeService;
 
+
+    @GetMapping("/home")
+    public String showRecipeList(Model model){
+        Collection<Recipe> recipeList= recipeService.listAllIncludingCategory();
+        model.addAttribute("recipeList",recipeList);
+        return "home";
+    }
 }

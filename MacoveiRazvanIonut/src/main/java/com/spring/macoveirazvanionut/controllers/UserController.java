@@ -10,6 +10,7 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
 import java.util.Collection;
 
@@ -23,7 +24,7 @@ public class UserController {
         return "login";
     }
     @GetMapping("/login")
-    public String showLoginnPage(){
+    public String showLoginnPage(Model model){
         return "login";
     }
 
@@ -34,19 +35,15 @@ public class UserController {
     }
 
     @PostMapping("user/createAccount/save")
-    public String saveUser(User user){
+    public String saveUser(User user, RedirectAttributes redirectAttributes){
         BCryptPasswordEncoder encoder=new BCryptPasswordEncoder();
         String encodedPassword=encoder.encode(user.getPassword());
         user.setPassword(encodedPassword);
         userService.save(user);
-        return "redirect:/succesfullCreatedAccount";
+        redirectAttributes.addFlashAttribute("message","Account created succesfully");
+        return "redirect:/login";
     }
 
-    @GetMapping("/home")
-    public String showRecipeList(Model model){
-        Collection<Recipe> recipeList= recipeService.listAllIncludingCategory();
-        model.addAttribute("recipeList",recipeList);
-        return "home";
-    }
+
 
 }

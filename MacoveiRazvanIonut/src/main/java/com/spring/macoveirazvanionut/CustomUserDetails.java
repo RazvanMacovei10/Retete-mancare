@@ -1,10 +1,12 @@
 package com.spring.macoveirazvanionut;
 
+import com.spring.macoveirazvanionut.entities.Recipe;
 import com.spring.macoveirazvanionut.entities.User;
 import org.springframework.security.core.GrantedAuthority;
 import org.springframework.security.core.userdetails.UserDetails;
 
 import java.util.Collection;
+import java.util.List;
 
 public class CustomUserDetails implements UserDetails {
 
@@ -52,5 +54,12 @@ public class CustomUserDetails implements UserDetails {
 
     public String getFullName(){
         return user.getFirstName()+" "+user.getLastName();
+    }
+    public Integer getId(){
+        return user.getId();
+    }
+
+    public List<Recipe> getRecipes(){
+        return (List<Recipe>) user.getRecipes();
     }
 }
