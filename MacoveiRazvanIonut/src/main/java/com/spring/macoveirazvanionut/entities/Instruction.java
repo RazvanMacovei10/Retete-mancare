@@ -12,6 +12,10 @@ public class Instruction {
     @Column(name="inst_description",nullable = false,length = 3000)
     private String instructionDesc;
 
+    @ManyToOne
+    @JoinColumn(name = "recipeId")
+    private Recipe recipe;
+
 
     public Integer getId() {
         return id;

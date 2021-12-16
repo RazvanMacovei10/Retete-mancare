@@ -2,6 +2,7 @@ package com.spring.macoveirazvanionut.entities;
 
 import javax.persistence.*;
 import java.util.HashSet;
+import java.util.List;
 import java.util.Set;
 
 @Entity
@@ -30,9 +31,13 @@ public class User {
     @Column(nullable = false,length = 30,name ="phoneNumber")
     private String phoneNumber;
 
-    @OneToMany(targetEntity = Recipe.class,cascade = CascadeType.ALL)
-    @JoinColumn(name="userId",referencedColumnName = "id")
+
+    @OneToMany(mappedBy = "user")
     private Set<Recipe> recipes=new HashSet<>();
+
+    @OneToMany(mappedBy = "user")
+    private Set<Review> review=new HashSet<>();
+
 
 
     public Integer getId() {
@@ -97,5 +102,13 @@ public class User {
 
     public void setRecipes(Set<Recipe> recipes) {
         this.recipes = recipes;
+    }
+
+    public Set<Review> getReview() {
+        return review;
+    }
+
+    public void setReview(Set<Review> review) {
+        this.review = review;
     }
 }

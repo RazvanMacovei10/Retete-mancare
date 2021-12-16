@@ -51,7 +51,8 @@ public class SecurityConfiguration extends WebSecurityConfigurerAdapter {
     protected void configure(HttpSecurity http) throws Exception{
         http.authorizeRequests().antMatchers(
                         "/user/createAccount**",
-                "/user/createAccount/save**").permitAll()
+                "/user/createAccount/save**",
+                        "/images/**").permitAll()
                 .anyRequest().authenticated()
                 .and()
                 .formLogin()

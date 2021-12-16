@@ -1,5 +1,6 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+      layout:decorate="~{layoutLogin}">
 <head>
     <meta charset="UTF-8">
     <title>Title</title>
@@ -13,7 +14,8 @@
 <body>
 <h1>welcome to create account</h1>
 <br>
-
+<div layout:fragment="content">
+    <section class="my-5">
 <div class="container-fluid text-center,">
     Create account
     <form th:action="@{/user/createAccount/save}" method="post" th:object="${user}"
@@ -68,6 +70,8 @@
 </div>
 
     </form>
+</div>
+    </section>
 </div>
 </body>
 </html>

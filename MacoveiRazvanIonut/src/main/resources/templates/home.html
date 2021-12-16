@@ -1,5 +1,6 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+      layout:decorate="~{layout}">
 <head>
     <meta charset="UTF-8">
     <title>Title</title>
@@ -8,57 +9,65 @@
           rel="stylesheet"
           integrity="sha384-1BmE4kWBq78iYhFldvKuhfTAU6auU8tT94WrHftjDbrCEXSU1oBoqyl2QvZ6jIW3"
           crossorigin="anonymous">
+
 </head>
+
 <body>
-<h1>
-    Welcome to recipes page.
-    <div>
-        <div>
-            <form th:action="@{/logout}"method="post">
-                <p>
-                    Welcome <b>[[${#request.userPrincipal.principal.fullName}]]</b>
-                    <b>[[${#request.userPrincipal.principal.id}]]</b>
-                </p>
-                <input type="submit" value="Sign out"/>
-            </form>
-        </div>
-        <table class="table table-dark">
-            <thead>
-            <tr>
-                <th>
-                    Id
-                </th>
-                <th>
-                    Name
-                </th>
-                <th>
-                    Category
-                </th>
-                <th>
-                    Time of preparation
-                </th>
-            </tr>
-            </thead>
-            <tbody>
-            <th:block th:each="recipe:${recipeList}">
-                <tr>
-                    <td>
-                        [[${recipe.id}]]
-                    </td>
-                    <td>
-                        [[${recipe.name}]]
-                    </td>
-                    <td>
-                        [[${recipe.getCategoryName()}]]
-                    </td>
-                    <td>
-                        [[${recipe.preparationTime}]]
-                    </td>
-                </tr>
-            </th:block>
-            </tbody>
-        </table>
-    </div>
-</h1>
+<div layout:fragment="content">
+    <section class="my-5">
+        <h1>
+            Welcome to recipes page.
+            <a href="/" th:href="@{/addRecipe}">Add Recipe here</a></span>
+            <div>
+                <div>
+                    <form th:action="@{/logout}"method="post">
+                        <p>
+                            Welcome <b>[[${#request.userPrincipal.principal.fullName}]]</b>
+                            <b>[[${#request.userPrincipal.principal.id}]]</b>
+                        </p>
+                        <input type="submit" value="Sign out"/>
+                    </form>
+                </div>
+                <table class="table table-dark">
+                    <thead>
+                    <tr>
+                        <th>
+                            Id
+                        </th>
+                        <th>
+                            Name
+                        </th>
+                        <th>
+                            Category
+                        </th>
+                        <th>
+                            Time of preparation
+                        </th>
+                    </tr>
+                    </thead>
+                    <tbody>
+                    <th:block th:each="recipe:${recipeList}">
+                        <tr>
+                            <td>
+                                [[${recipe.id}]]
+                            </td>
+                            <td>
+                                [[${recipe.name}]]
+                            </td>
+                            <td>
+                                [[${recipe.getCategoryName}]]
+                            </td>
+                            <td>
+                                [[${recipe.getUserName}]]
+                            </td>
+                        </tr>
+                    </th:block>
+                    </tbody>
+                </table>
+            </div>
+        </h1>
+    </section>
+</div>
+
 </body>
 </html>

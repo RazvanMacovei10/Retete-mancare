@@ -33,6 +33,10 @@ public class UserController {
         model.addAttribute("user" , new User());
         return "createAccount";
     }
+    @GetMapping("/accountInfo")
+    public String showAccountInfo(){
+        return "accountInfo";
+    }
 
     @PostMapping("user/createAccount/save")
     public String saveUser(User user, RedirectAttributes redirectAttributes){

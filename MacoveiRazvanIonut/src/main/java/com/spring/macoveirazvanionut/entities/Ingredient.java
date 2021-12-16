@@ -1,6 +1,7 @@
 package com.spring.macoveirazvanionut.entities;
 
 import javax.persistence.*;
+import java.util.List;
 import java.util.Set;
 
 @Entity
@@ -18,13 +19,9 @@ public class Ingredient {
     @Column(name="state")
     private String ingredientState;
 
-    @Column(name="quantity")
-    private double ingredientQuantity;
 
-
-    @ManyToMany(cascade = CascadeType.ALL)
-    @JoinTable
-    private Set<Recipe> recipes;
+    @OneToMany(mappedBy = "ingredient")
+    private List<IngredientRecipe> ingredientRecipeList;
 
 
 
@@ -52,19 +49,13 @@ public class Ingredient {
         this.ingredientState = ingredientState;
     }
 
-    public double getIngredientQuantity() {
-        return ingredientQuantity;
+
+
+    public List<IngredientRecipe> getIngredientRecipeList() {
+        return ingredientRecipeList;
     }
 
-    public void setIngredientQuantity(double ingredientQuantity) {
-        this.ingredientQuantity = ingredientQuantity;
-    }
-
-    public Set<Recipe> getRecipes() {
-        return recipes;
-    }
-
-    public void setRecipes(Set<Recipe> recipes) {
-        this.recipes = recipes;
+    public void setIngredientRecipeList(List<IngredientRecipe> ingredientRecipeList) {
+        this.ingredientRecipeList = ingredientRecipeList;
     }
 }

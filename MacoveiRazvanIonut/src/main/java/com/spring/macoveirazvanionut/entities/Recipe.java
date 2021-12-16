@@ -2,6 +2,7 @@ package com.spring.macoveirazvanionut.entities;
 
 import javax.persistence.*;
 import java.util.HashSet;
+import java.util.List;
 import java.util.Set;
 
 @Entity
@@ -21,23 +22,25 @@ public class Recipe {
     @Column(nullable = true, name = "photoUrl")
     private String photoUrl;
 
-
-    @OneToMany(targetEntity = Review.class,cascade = CascadeType.ALL)
-    @JoinColumn(name="recipeId",referencedColumnName = "id")
+    @OneToMany(mappedBy = "recipe")
     private Set<Review> reviews=new HashSet<>();
 
-    @OneToMany(targetEntity = Instruction.class,cascade = CascadeType.ALL)
-    @JoinColumn(name="recipeId",referencedColumnName = "id")
+    @OneToMany(mappedBy = "recipe")
     private Set<Instruction> instructions=new HashSet<>();
 
-    @ManyToMany(mappedBy = "recipes")
-    private Set<Ingredient> ingredients;
+    @OneToMany(mappedBy = "recipe")
+    private List<IngredientRecipe> ingredientRecipeList;
 
-    @OneToOne(cascade = CascadeType.ALL)
-    @JoinColumn(name = "id")
+    @ManyToOne
+    @JoinColumn(name = "categoryId")
     private Category category;
 
-    public String getCategoryName(){return category.getCategoryName();}
+    @ManyToOne
+    @JoinColumn(name = "userId")
+    private User user;
+
+    public String getCategoryName(){return getCategory().getCategoryName();}
+    public String getUserName(){return getUser().getFirstName();}
 
     public Integer getId() {
         return id;
@@ -79,13 +82,8 @@ public class Recipe {
         this.instructions = instructions;
     }
 
-    public Set<Ingredient> getIngredients() {
-        return ingredients;
-    }
 
-    public void setIngredients(Set<Ingredient> ingredients) {
-        this.ingredients = ingredients;
-    }
+
 
     public Category getCategory() {
         return category;
@@ -101,5 +99,21 @@ public class Recipe {
 
     public void setPhotoUrl(String photoUrl) {
         this.photoUrl = photoUrl;
+    }
+
+    public List<IngredientRecipe> getIngredientRecipeList() {
+        return ingredientRecipeList;
+    }
+
+    public void setIngredientRecipeList(List<IngredientRecipe> ingredientRecipeList) {
+        this.ingredientRecipeList = ingredientRecipeList;
+    }
+
+    public User getUser() {
+        return user;
+    }
+
+    public void setUser(User user) {
+        this.user = user;
     }
 }

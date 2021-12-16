@@ -14,8 +14,7 @@ public class Category {
     @Column(name="name")
     private String categoryName;
 
-    @OneToMany(targetEntity = Recipe.class,cascade = CascadeType.ALL)
-    @JoinColumn(name="categoryId",referencedColumnName = "id")
+    @OneToMany(mappedBy = "category")
     private Set<Recipe> recipes=new HashSet<>();
 
 
