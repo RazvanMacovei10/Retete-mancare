@@ -1,7 +1,9 @@
 package com.spring.macoveirazvanionut.controllers;
 
+import com.spring.macoveirazvanionut.entities.Ingredient;
 import com.spring.macoveirazvanionut.entities.Recipe;
 import com.spring.macoveirazvanionut.entities.User;
+import com.spring.macoveirazvanionut.services.IngredientServices;
 import com.spring.macoveirazvanionut.services.RecipeServices;
 import com.spring.macoveirazvanionut.services.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -17,7 +19,10 @@ import java.util.List;
 
 @Controller
 public class RecipeController {
-    @Autowired private RecipeServices recipeService;
+    @Autowired
+    private RecipeServices recipeService;
+    @Autowired
+    private IngredientServices ingredientService;
 
 
     @GetMapping("/home")
@@ -34,6 +39,8 @@ public class RecipeController {
 
     @GetMapping("/addRecipe")
     public String addNewRecipe(Model model){
+        Collection<Ingredient> ingredientList= ingredientService.listAll();
+        model.addAttribute("ingredientList",ingredientList);
         model.addAttribute("recipe" , new Recipe());
         return "addRecipe";
     }

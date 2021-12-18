@@ -15,19 +15,6 @@
 <body>
 <div layout:fragment="content">
     <section class="my-5">
-        <h1>
-            Welcome to recipes page.
-            <a href="/" th:href="@{/addRecipe}">Add Recipe here</a></span>
-            <div>
-                <div>
-                    <form th:action="@{/logout}"method="post">
-                        <p>
-                            Welcome <b>[[${#request.userPrincipal.principal.fullName}]]</b>
-                            <b>[[${#request.userPrincipal.principal.id}]]</b>
-                        </p>
-                        <input type="submit" value="Sign out"/>
-                    </form>
-                </div>
                 <table class="table table-dark">
                     <thead>
                     <tr>
@@ -41,7 +28,7 @@
                             Category
                         </th>
                         <th>
-                            Time of preparation
+                            User's recipe
                         </th>
                     </tr>
                     </thead>

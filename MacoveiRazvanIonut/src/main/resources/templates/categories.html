@@ -6,6 +6,28 @@
     <title>Title</title>
 </head>
 <body>
+<div layout:fragment="content">
+    <section class="my-5">
+<div class="col-sm-4">
+    <h1>To-Do List</h1>
+
+    <form onsubmit="return addItem('listt', this.inputItem)">
+        <input type="text" id="inputItem" placeholder="Enter a Task">
+        <input type="submit">
+
+    </form>
+
+    <ul id="listt">
+
+    </ul>
+
+
+
+</div>
+    </section>
+</div>
 
 </body>
+
+</script>
 </html>

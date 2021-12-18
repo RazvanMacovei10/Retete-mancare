@@ -39,6 +39,7 @@ public class Recipe {
     @JoinColumn(name = "userId")
     private User user;
 
+
     public String getCategoryName(){return getCategory().getCategoryName();}
     public String getUserName(){return getUser().getFirstName();}
 
@@ -80,6 +81,14 @@ public class Recipe {
 
     public void setInstructions(Set<Instruction> instructions) {
         this.instructions = instructions;
+    }
+
+    public void addIngredient(IngredientRecipe ingredient){
+        this.ingredientRecipeList.add(ingredient);
+    }
+
+    public void addInstruction(Instruction instruction) {
+        this.instructions.add(instruction);
     }
 
 
