@@ -8,6 +8,7 @@ import org.springframework.stereotype.Service;
 
 import java.util.Collection;
 import java.util.List;
+import java.util.Optional;
 
 @Service
 public class RecipeServices {
@@ -18,6 +19,14 @@ public class RecipeServices {
     public List<Recipe> listAll()
     {
         return (List<Recipe>) recipeRepository.findAll();
+    }
+
+    public Recipe get(Integer id){
+        Optional<Recipe> result=recipeRepository.findById(id);
+        if(result.isPresent()){
+            return result.get();
+        }
+return null;
     }
 
     public Collection<Recipe> listAllIncludingCategory()

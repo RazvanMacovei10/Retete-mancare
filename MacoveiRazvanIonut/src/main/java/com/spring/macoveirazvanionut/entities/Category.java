@@ -14,6 +14,9 @@ public class Category {
     @Column(name="name")
     private String categoryName;
 
+    @Column(name="photoUrl")
+    private String photoUrl;
+
     @OneToMany(mappedBy = "category")
     private Set<Recipe> recipes=new HashSet<>();
 
@@ -41,5 +44,13 @@ public class Category {
 
     public void setRecipes(Set<Recipe> recipes) {
         this.recipes = recipes;
+    }
+
+    public String getPhotoUrl() {
+        return photoUrl;
+    }
+
+    public void setPhotoUrl(String photoUrl) {
+        this.photoUrl = photoUrl;
     }
 }

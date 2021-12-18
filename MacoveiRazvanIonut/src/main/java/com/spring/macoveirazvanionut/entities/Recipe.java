@@ -22,14 +22,20 @@ public class Recipe {
     @Column(nullable = true, name = "photoUrl")
     private String photoUrl;
 
+    @Column(nullable=false,name="instructions",length = 10000)
+    private String instructions;
+
+    public String getInstructions() {
+        return instructions;
+    }
+
+    public void setInstructions(String instructions) {
+        this.instructions = instructions;
+    }
+
     @OneToMany(mappedBy = "recipe")
     private Set<Review> reviews=new HashSet<>();
 
-    @OneToMany(mappedBy = "recipe")
-    private Set<Instruction> instructions=new HashSet<>();
-
-    @OneToMany(mappedBy = "recipe")
-    private List<IngredientRecipe> ingredientRecipeList;
 
     @ManyToOne
     @JoinColumn(name = "categoryId")
@@ -40,8 +46,16 @@ public class Recipe {
     private User user;
 
 
-    public String getCategoryName(){return getCategory().getCategoryName();}
-    public String getUserName(){return getUser().getFirstName();}
+    public String getCategoryName() {
+        if (getCategory() != null) {
+            return getCategory().getCategoryName();
+        }
+        return null;
+    }
+    public String getUserName(){
+        if(getUser()!=null)
+        {return getUser().getFirstName();}
+    return null;}
 
     public Integer getId() {
         return id;
@@ -75,21 +89,6 @@ public class Recipe {
         this.reviews = reviews;
     }
 
-    public Set<Instruction> getInstructions() {
-        return instructions;
-    }
-
-    public void setInstructions(Set<Instruction> instructions) {
-        this.instructions = instructions;
-    }
-
-    public void addIngredient(IngredientRecipe ingredient){
-        this.ingredientRecipeList.add(ingredient);
-    }
-
-    public void addInstruction(Instruction instruction) {
-        this.instructions.add(instruction);
-    }
 
 
 
@@ -110,13 +109,6 @@ public class Recipe {
         this.photoUrl = photoUrl;
     }
 
-    public List<IngredientRecipe> getIngredientRecipeList() {
-        return ingredientRecipeList;
-    }
-
-    public void setIngredientRecipeList(List<IngredientRecipe> ingredientRecipeList) {
-        this.ingredientRecipeList = ingredientRecipeList;
-    }
 
     public User getUser() {
         return user;
