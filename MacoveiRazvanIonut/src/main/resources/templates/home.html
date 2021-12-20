@@ -19,47 +19,12 @@
 <body>
 <div layout:fragment="content">
     <section class="my-5">
-                <table class="table table-dark">
-                    <thead>
-                    <tr>
-                        <th>
-                            Id
-                        </th>
-                        <th>
-                            Name
-                        </th>
-                        <th>
-                            Category
-                        </th>
-                        <th>
-                            User's recipe
-                        </th>
-                    </tr>
-                    </thead>
-                    <tbody>
-                    <th:block th:each="recipe:${recipeList}">
-                        <tr>
-                            <td>
-                                [[${recipe.id}]]
-                            </td>
-                            <td>
-                                [[${recipe.name}]]
-                            </td>
-                            <td>
-                                [[${recipe.getCategoryName}]]
-                            </td>
-                            <td>
-                                [[${recipe.getUserName}]]
-                            </td>
-                        </tr>
-                    </th:block>
-                    </tbody>
-                </table>
+
         <div class="container">
             <div class="row">
                 <div class="col-sm-4"  th:each="recipe:${recipeList}" style="margin-bottom: 2.5em;">
             <div style="width: 18rem;" class="card" >
-                    <img src="/images/logoRecipe.png" class="card-img-top" alt="...">
+                    <img th:src="@{${recipe.photoUrl}}" class="card-img-top" alt="...">
                     <div class="card-body">
                         <h5 class="card-title">Recipe's title: [[${recipe.name}]]</h5>
                         <p class="card-text">Owner name: <strong>[[${recipe.getUserName}]]</strong></p>

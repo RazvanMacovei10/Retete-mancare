@@ -17,8 +17,11 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.multipart.MultipartFile;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
+import java.io.IOException;
 import java.security.Principal;
 import java.util.Collection;
 
@@ -54,16 +57,29 @@ public class RecipeController {
         Recipe recipe = recipeService.get(id);
         model.addAttribute("recipe",recipe);
 
-        return "addRecipe";
+        return "recipeDescription";
     }
 
 
 
     @PostMapping("addRecipe/save")
-    public String saveRecipe(Recipe recipe, RedirectAttributes redirectAttributes,@AuthenticationPrincipal CustomUserDetails customUserDetails){
+    public String saveRecipe(Recipe recipe,
+                             RedirectAttributes redirectAttributes,
+                             @AuthenticationPrincipal CustomUserDetails customUserDetails,
+                             @RequestParam("imageFile") MultipartFile imageFile,
+                             Model model){
         recipe.setUser(customUserDetails.getUser());
+        try {
+            String folder="src/main/resources/static/images/"+customUserDetails.getUser().getEmail()+"/";
+            recipeService.saveImage(imageFile,folder);
+            recipe.setPhotoUrl("/images/"+customUserDetails.getUser().getEmail()+"/"+ imageFile.getOriginalFilename());
+            model.addAttribute("recipe",recipe);
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
         recipeService.save(recipe);
         redirectAttributes.addFlashAttribute("message","Recipe added succesfully");
         return "redirect:/userRecipes";
     }
+
 }
