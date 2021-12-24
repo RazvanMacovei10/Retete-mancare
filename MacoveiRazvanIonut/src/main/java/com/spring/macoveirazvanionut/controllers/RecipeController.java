@@ -82,4 +82,27 @@ public class RecipeController {
         return "redirect:/userRecipes";
     }
 
+    @GetMapping("userRecipes")
+    public String showUserRecipes(@AuthenticationPrincipal CustomUserDetails customUserDetails,Model model){
+        Collection<Recipe> recipeList= recipeService.listAllUserRecipes(customUserDetails.getId());
+        model.addAttribute("recipeList",recipeList);
+        return "userRecipes";
+    }
+
+    @GetMapping("userRecipes/edit/{id}")
+    public String showEditRecipe(@PathVariable("id") Integer id,Model model){
+        Recipe recipe=recipeService.get(id);
+        Collection<Category> categoriesList= categoryServices.listAll();
+        model.addAttribute("categoriesList",categoriesList);
+        model.addAttribute("recipe",recipe);
+
+        return "editRecipe";
+    }
+
+    @GetMapping("userRecipes/delete/{id}")
+    public String deleteProduct(@PathVariable("id") Integer id,Model model){
+        recipeService.deleteById(id);
+        return "redirect:/userRecipes";
+    }
+
 }

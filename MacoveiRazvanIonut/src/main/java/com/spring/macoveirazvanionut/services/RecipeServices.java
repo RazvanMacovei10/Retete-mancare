@@ -1,5 +1,6 @@
 package com.spring.macoveirazvanionut.services;
 
+import com.spring.macoveirazvanionut.CustomUserDetails;
 import com.spring.macoveirazvanionut.entities.Recipe;
 import com.spring.macoveirazvanionut.entities.User;
 import com.spring.macoveirazvanionut.repositories.RecipeRepository;
@@ -22,6 +23,11 @@ public class RecipeServices {
     @Autowired
     private RecipeRepository recipeRepository;
 
+    CustomUserDetails customUserDetails;
+
+public void deleteById(Integer id){
+    recipeRepository.deleteById(id);
+}
 
     public List<Recipe> listAll()
     {
@@ -39,6 +45,11 @@ return null;
     public Collection<Recipe> listAllIncludingCategory()
     {
         return (Collection<Recipe>) recipeRepository.findAllRecipes();
+    }
+
+    public Collection<Recipe> listAllUserRecipes(Integer id)
+    {
+        return (Collection<Recipe>) recipeRepository.findAllUserRecipes(id);
     }
 
     public void save(Recipe recipe)  {

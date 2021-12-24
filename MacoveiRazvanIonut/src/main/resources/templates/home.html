@@ -13,6 +13,7 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/jsgrid/1.5.3/jsgrid.min.css" />
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/jsgrid/1.5.3/jsgrid-theme.min.css" />
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    <link rel="stylesheet" href="/designs.css">
 
 </head>
 
@@ -24,12 +25,12 @@
             <div class="row">
                 <div class="col-sm-4"  th:each="recipe:${recipeList}" style="margin-bottom: 2.5em;">
             <div style="width: 18rem;" class="card" >
-                    <img th:src="@{${recipe.photoUrl}}" class="card-img-top" alt="...">
+                    <img th:src="@{${recipe.photoUrl}}" class="card-img card-img-top" alt="...">
                     <div class="card-body">
                         <h5 class="card-title">Recipe's title: [[${recipe.name}]]</h5>
                         <p class="card-text">Owner name: <strong>[[${recipe.getUserName}]]</strong></p>
                         <p class="card-text">Category: <b>[[${recipe.getCategoryName}]]</b></p>
-                        <a class="h4"  th:href="@{'/recipeDescription/'+${recipe.id}}">See full recipe</a>
+                        <a class="btn btn-info" style="float:right" th:href="@{'/recipeDescription/'+${recipe.id}}">See full recipe</a>
                     </div>
                 </div>
         </div>

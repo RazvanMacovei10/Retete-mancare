@@ -9,17 +9,24 @@
           rel="stylesheet"
           integrity="sha384-1BmE4kWBq78iYhFldvKuhfTAU6auU8tT94WrHftjDbrCEXSU1oBoqyl2QvZ6jIW3"
           crossorigin="anonymous">
-    <link href="../static/designs.css" rel="stylesheet">
+    <link href="/designs.css" rel="stylesheet">
 </head>
 <body>
 <br>
 <div layout:fragment="content">
     <section class="my-5">
 <div class="container-fluid text-center,">
-    Create account
+    <div class="center"><h1 style="
+    color: #3399ff;
+    font-family: 'Courier New', monospace;
+    font-size: 5em;
+    font-weight: 999;
+    line-height: 72px;
+    margin: 0 0 24px;
+    text-align: center;">Register</h1></div>
     <form th:action="@{/user/createAccount/save}" method="post" th:object="${user}"
     style="max-width: 50em;margin:0 auto">
-<div class="border">
+<div class="border" style="margin-top: 5em">
     <div class="form-group row">
         <label class="col-sm-4 col-form-label">
             First Name
