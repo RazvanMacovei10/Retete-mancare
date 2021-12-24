@@ -11,13 +11,13 @@
           crossorigin="anonymous">
     <link href="/designs.css" rel="stylesheet">
 </head>
-<body>
+<body style="background-color:#527a7a;;">
 <br>
 <div layout:fragment="content">
     <section class="my-5">
 <div class="container-fluid text-center,">
     <div class="center"><h1 style="
-    color: #3399ff;
+    color: bisque;
     font-family: 'Courier New', monospace;
     font-size: 5em;
     font-weight: 999;
@@ -25,46 +25,47 @@
     margin: 0 0 24px;
     text-align: center;">Register</h1></div>
     <form th:action="@{/user/createAccount/save}" method="post" th:object="${user}"
-    style="max-width: 50em;margin:0 auto">
+    style="max-width: 50em;margin:0 auto;background-color: bisque;
+    color:black;">
 <div class="border" style="margin-top: 5em">
     <div class="form-group row">
-        <label class="col-sm-4 col-form-label">
+        <label class="col-sm-4 col-form-label" style="margin-bottom: 1em">
             First Name
         </label>
         <div class="col-sm-8">
-            <input type="text" th:field="${user.firstName}" class="form-control" required minlength="3" maxlength="20"/>
+            <input type="text" th:field="${user.firstName}" class="form-control" required minlength="3" maxlength="20" style="margin-bottom: 1em"/>
         </div>
     </div>
     <div class="form-group row">
-        <label class="col-sm-4 col-form-label">
+        <label class="col-sm-4 col-form-label" style="margin-bottom: 1em">
             Last Name
         </label>
         <div class="col-sm-8">
-            <input type="text" th:field="${user.lastName}" class="form-control" required minlength="3" maxlength="20"/>
+            <input type="text" th:field="${user.lastName}" class="form-control" required minlength="3" maxlength="20" style="margin-bottom: 1em"/>
         </div>
     </div>
     <div class="form-group row">
-        <label class="col-sm-4 col-form-label">
+        <label class="col-sm-4 col-form-label" style="margin-bottom: 1em">
             E-mail:
         </label>
         <div class="col-sm-8">
-            <input type="email" th:field="${user.email}" class="form-control" required minlength="7"/>
+            <input type="email" th:field="${user.email}" class="form-control" required minlength="7" style="margin-bottom: 1em"/>
         </div>
     </div>
     <div class="form-group row">
-        <label class="col-sm-4 col-form-label">
+        <label class="col-sm-4 col-form-label" style="margin-bottom: 1em">
            Phone number:
         </label>
         <div class="col-sm-8">
-            <input type="number" th:field="${user.phoneNumber}" class="form-control" required minlength="10" maxlength="10"/>
+            <input type="number" th:field="${user.phoneNumber}" class="form-control" required minlength="10" maxlength="10" style="margin-bottom: 1em"/>
         </div>
     </div>
     <div class="form-group row">
-        <label class="col-sm-4 col-form-label">
+        <label class="col-sm-4 col-form-label" style="margin-bottom: 1em">
             Password:
         </label>
         <div class="col-sm-8">
-            <input type="password" th:field="${user.password}" class="form-control" required minlength="3" maxlength="20"/>
+            <input type="password" th:field="${user.password}" class="form-control" required minlength="3" maxlength="20" style="margin-bottom: 1em"/>
         </div>
     </div>
     <div class="form-group row">
