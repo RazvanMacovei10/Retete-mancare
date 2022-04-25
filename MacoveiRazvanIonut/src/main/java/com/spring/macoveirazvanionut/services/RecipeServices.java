@@ -52,6 +52,10 @@ return null;
         return (Collection<Recipe>) recipeRepository.findAllUserRecipes(id);
     }
 
+    public Collection<Recipe> listAllCategoryRecipes(Integer id){
+    return (Collection<Recipe>) recipeRepository.findRecipesByCategory(id);
+    }
+
     public void save(Recipe recipe)  {
         recipeRepository.save(recipe);
     }

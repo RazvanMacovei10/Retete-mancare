@@ -8,15 +8,18 @@
           rel="stylesheet"
           integrity="sha384-1BmE4kWBq78iYhFldvKuhfTAU6auU8tT94WrHftjDbrCEXSU1oBoqyl2QvZ6jIW3"
           crossorigin="anonymous">
-    <link rel="stylesheet" href="/designs.css">
+    <link href="/designs.css" rel="stylesheet">
 </head>
 <body>
 <div layout:fragment="content">
     <section class="my-5">
+        <div class="container-fluid text-center center" style="border: black">
+        <img th:src="@{${recipe.photoUrl}}" align="left" style="width: 40%;height: 40%;border-radius: 20%">
 <h5 class="card-title">Recipe's title: [[${recipe.name}]]</h5>
 <p class="card-text">Owner name: <strong>[[${recipe.getUserName}]]</strong></p>
 <p class="card-text">Category: <b>[[${recipe.getCategoryName}]]</b></p>
-<p class="card-text"><b>[[${recipe.getInstructions}]]</b></p>
+<p class="card-text" style="font-family: Verdana"><b>[[${recipe.getInstructions}]]</b></p>
+        </div>
     </section>
 </div>
 </body>

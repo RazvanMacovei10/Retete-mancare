@@ -17,4 +17,7 @@ public interface RecipeRepository extends CrudRepository<Recipe,Integer> {
     @Query("SELECT r from Recipe r where r.user.id=?1")
     Collection<Recipe> findAllUserRecipes(Integer id);
 
+    @Query("SELECT r from Recipe r where r.category.id=?1")
+    Collection<Recipe> findRecipesByCategory(Integer id);
+
 }

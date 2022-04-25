@@ -38,8 +38,11 @@ public class RecipeController {
         model.addAttribute("recipeList",recipeList);
         return "home";
     }
+
     @GetMapping("/categories")
-    public String showCategories(){
+    public String showCategories(Model model){
+        Collection<Category> categoriesList= categoryServices.listAll();
+        model.addAttribute("categoriesList",categoriesList);
         return "categories";
     }
 
@@ -58,6 +61,14 @@ public class RecipeController {
         model.addAttribute("recipe",recipe);
 
         return "recipeDescription";
+    }
+
+
+    @GetMapping("/home/{id}")
+    public String seeRecipesByCategpry(@PathVariable("id") Integer id,Model model){
+        Collection<Recipe> recipeList=recipeService.listAllCategoryRecipes(id);
+        model.addAttribute("recipeList",recipeList);
+        return "home";
     }
 
 
@@ -95,7 +106,6 @@ public class RecipeController {
         Collection<Category> categoriesList= categoryServices.listAll();
         model.addAttribute("categoriesList",categoriesList);
         model.addAttribute("recipe",recipe);
-
         return "editRecipe";
     }
 

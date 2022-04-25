@@ -20,18 +20,17 @@
 <body>
 <div layout:fragment="content">
     <section class="my-5">
-
         <div class="container">
             <div class="row">
                 <div class="col-sm-4"  th:each="recipe:${recipeList}" style="margin-bottom: 2.5em;">
             <div style="width: 18rem;" class="card" >
                     <img th:src="@{${recipe.photoUrl}}" class="card-img card-img-top" alt="...">
                     <div class="card-body">
-                        <h5 class="card-title">Recipe's title: [[${recipe.name}]]</h5>
+                        <h5 class="card-title">[[${recipe.name}]]</h5>
                         <p class="card-text">Owner name: <strong>[[${recipe.getUserName}]]</strong></p>
                         <p class="card-text">Category: <b>[[${recipe.getCategoryName}]]</b></p>
                         <a class="btn btn-info" style="float:right" th:href="@{'/recipeDescription/'+${recipe.id}}">See full recipe</a>
-                    </div>
+                    </div>  
                 </div>
         </div>
         </div>

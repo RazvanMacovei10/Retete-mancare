@@ -14,6 +14,21 @@
 <div layout:fragment="content">
     <section class="my-5">
 
+        <div class="container">
+            <div class="row">
+                <div class="col-sm-4"  th:each="category:${categoriesList}" style="margin-bottom: 2.5em;">
+                    <a style="color: inherit" th:href="@{'/home/'+${category.id}}">
+                    <div style="width: 18rem;" class="card">
+                        <img th:src="@{${category.photoUrl}}" class="card-img card-img-top" alt="...">
+                        <div class="card-body bg-dark">
+                            <h5 class="card-title" style="color: white">[[${category.categoryName}]]</h5>
+                        </div>
+                    </div>
+                    </a>
+                </div>
+            </div>
+        </div>
+
 
 
     </section>
